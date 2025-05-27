@@ -32,9 +32,9 @@ public class CssExtractor {
 
         // 1. HTML 파일 읽기
         /*
-        experiment03.htm 파일을 Jsoup을 이용해 파싱합니다.
+        파일을 Jsoup을 이용해 파싱합니다.
          */
-        File input = new File("experiment03.htm"); // <- 여기에 파일 이름 넣어주세요.
+        File input = new File("input.htm"); // <- 여기에 파일 이름 넣어주세요.
         Document doc = Jsoup.parse(input, "UTF-8");
 
         // 2. STYLE 태그 추적 및 관리
