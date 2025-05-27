@@ -23,12 +23,13 @@ import java.util.*;
  * </p>
  *
  * @author jeesw1221
- * @version 0.1 Beta
+ * @version 0.2 Beta
  *     2025.05.27
  */
 
 public class CssExtractor {
     public static void main(String[] args) throws IOException {
+
         // 1. HTML 파일 읽기
         /*
         experiment03.htm 파일을 Jsoup을 이용해 파싱합니다.
@@ -52,7 +53,7 @@ public class CssExtractor {
         3) 새로운 스타일 조각마다 style-1, style-2 같은 고유 클래스명을 자동 생성합니다.
         4) 인라인 스타일을 제거하고 대신 해당 클래스명을 class 속성에 넣습니다.
          */
-        Map<String, String> styleMap = new HashMap<>();
+        Map<String, String> styleMap = new LinkedHashMap<>();
         Map<String, Set<Element>> elementsByStyle = new HashMap<>();
         int styleCounter = 1;
 
