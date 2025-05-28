@@ -7,9 +7,8 @@
 ## ✨ 기능 소개
 
 - HTML `<body>` 내부의 인라인 `style` 속성을 수집
-- 동일한 스타일 속성을 가진 요소에 자동으로 공통 클래스(`.style-1`, `.style-2`, ...) 부여
-- 기존 스타일은 제거하고 `<head>`의 `<style>` 태그에 통합
-- 각 스타일 선언에 `!important`를 추가하여 우선순위 보장
+- 동일한 스타일 속성을 가진 요소에 자동으로 공통 클래스(`.Extracted1`, `.Extracted2`, ...) 부여
+- 기존 스타일을 포함한 `<head>`의 `<style>` 태그에 통합
 - 중복 제거 및 파일 크기 최적화
 
 ---
@@ -43,18 +42,27 @@
 
 ### 변환 후 HTML
 ```html
-<td class="style-1">내용</td>
+<td class="Extracted1">내용</td>
 ```
 
 ### 변환 후 `<style>` 태그
 ```html
 <style type="text/css">
 <!--
-.style-1 {
-  border: solid 1px black !important;
-  padding: 5px !important;
-  text-align: center !important;
+.Extracted1 {
+  border: solid 1px black;
+  padding: 5px;
+  text-align: center;
 }
 -->
 </style>
 ```
+
+---
+
+## 개발 과정(Beta)
+0. 공통된 CSS는 Map으로 묶을 수 있다는 점에 착안
+1. 처음엔 단순히 인라인으로 되어 있는 Style을 Class로 묶는 방식으로 0.1 버전 개발 -> 기존 우선 순위 보장 안됨.
+2. 이를 해결하기 위해 !important를 붙이는 방법으로 0.2 버전 개발. 추가로 LinkedHashMap을 이용하여 style 순서도 정렬함.
+3. !important가 붙을 경우 다른 Style 붙일 때 문제가 생길 것을 고려하여, 기존 클래스로 되어 있는 스타일을 인라인으로 기존 인라인 스타일 앞에 붙인 뒤 다시 클래스로 변환함. -> 0.3 버전
+4. P.HStyle0 같은 상속 되는 헤더를 적용하지 않아 인라인화에서 버그 발생 함. -> 인라인 시 한글 파일 클래스로 나오는 P와LI, DIV에 관한 부분은 정규식으로 스타일 추출하도록 로직 개선. -> 0.4 버전
