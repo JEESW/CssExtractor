@@ -15,16 +15,16 @@ import java.util.*;
  * CSS Extractor
  * <p>
  *     공통된 Css를 임의의 명칭으로 묶어서 head 태그의 style로 묶어줍니다.
- *     이 때, 인라인으로 들어간 공통된 CSS는 제외됩니다.
- *     동작 과정:
+ *     이 때, 인라인으로 들어간 공통된 CSS는 제외됩니다.<br><br>
+ *     동작 과정:<br>
  *          기존 style 태그 안에 있는 클래스를 각 요소에 인라인 스타일로 넣은 후,
- *          중복되는 인라인 스타일을 모아 class로 변환합니다.
- *     사용법:
+ *          중복되는 인라인 스타일을 모아 class로 변환합니다.<br><br>
+ *     사용법:<br>
  *      1. 프로젝트(CssExtractor) 폴더에 input으로 들어갈 html을 삽입합니다.
- *          (이 때, UTF-8로 된 파일을 사용하는 것을 추천드립니다.)
- *          (메모장에서 "다른 이름으로 저장"을 누르고 인코딩 방식을 바꿀 수 있습니다.)
- *      2. `File input = new File();` 안에 htm 혹은 html 파일명을 넣어줍니다.
- *      3. 프로그램을 실행시키면 output.html이 프로젝트 폴더에 생성됩니다.
+ *          (이 때, UTF-8로 된 파일을 사용하는 것을 추천드립니다.
+ *          추가로 메모장에서 "다른 이름으로 저장"을 누르고 인코딩 방식을 바꿀 수 있습니다.)<br>
+ *      2. `File input = new File();` 안에 htm 혹은 html 파일명을 넣어줍니다.<br>
+ *      3. 프로그램을 실행시키면 output.html이 프로젝트 폴더에 생성됩니다.<br>
  * </p>
  *
  * @author jeesw
@@ -36,7 +36,7 @@ public class CssExtractor {
     public static void main(String[] args) throws IOException {
 
         // 1. HTML 파일 불러오기
-        File input = new File("FCR_HTML.htm");
+        File input = new File("input.htm");
         if (!input.exists()) {
             throw new FileNotFoundException("파일을 찾을 수 없습니다: " + input.getAbsolutePath());
         }
